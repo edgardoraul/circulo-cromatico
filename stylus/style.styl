@@ -1,0 +1,49 @@
+// Un círculo cromático hecho con CSS en forma animada
+
+// Normalizando 
+@import 'normalize.styl'
+@import 'funciones'
+@import 'node_modules/nib/index'
+
+// Para dar un centrado y que todo se contenga en las cajas
+*
+	box-sizing border-box
+	text-align center
+
+
+// Oculta todas las barras de desplazamiento
+::-webkit-scrollbar
+	display none
+
+body
+	color #555
+
+.contenedor
+	padding 1rem
+
+.circulo
+	animation-name: girador
+	animation-timing-function: linear
+	animation-duration: 1s
+	animation-iteration-count: infinite
+	border-radius 50%
+	box-sizing border-box
+	display inline-block
+	max-width 450px
+	overflow hidden
+
+
+	img
+		display block
+		width 100%
+
+.controles
+	padding 0.5rem
+
+
+/* @keyframes girador
+	0%
+		transform rotate(0deg)
+
+	100%
+		transform rotate(360deg) */
