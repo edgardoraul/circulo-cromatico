@@ -1,0 +1,3 @@
+# Ignorando todo lo de node.js
+
+node_modules/*.*

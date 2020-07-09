@@ -1,7 +1,4 @@
-# Atari 2600 (Stella) support for multiple assemblers
-# - DASM
-# - CC65
+# Ignorador
 
 node_modules
-img
-.gitignore
+.git
