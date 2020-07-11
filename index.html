@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
- <link rel="stylesheet" href="css/style.css" />
- <title>Círculo Cromático</title>
- <style id="movimiento"></style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <title>Círculo Cromático</title>
+    <style id="movimiento"></style>
 </head>
 <body>
  <header>
@@ -13,7 +14,9 @@
  </header>
  <div class="contenedor">
   <div class="circulo">
-   <img src="img/circulo2.png" alt="Círculo Cromático" id="imagenPrevisualizacion" />
+   <canvas id="circulin" width="300" height="300"></canvas>
+
+   <!--<img src="img/circulo2.png" alt="Círculo Cromático" id="imagenPrevisualizacion" />-->
   </div>
   <div class="controles">
       <div class="rpm">
@@ -22,16 +25,20 @@
             <input name="rpm" id="rpm" type="range" value="0" step="1" min="0" max="100" />
           </label>
       </div>
-      <!-- <div class="tiempo">
-        <label for="tempus">
-            Duración: <span id="tempSeg">10</span> segundos
-            <br />
-            <input type="range" id="tempus" name="tempus" value="100" min="1" max="100" step="1" />
-        </label>
-      </div> -->
       <div class="subirarchivo">
-          <label for="seleccionArchivos">Subir Círculo Cromático</label>
+          <label for="seleccionArchivos">Subir Imagen</label>
           <input type="file" name="seleccionArchivos" id="seleccionArchivos" value="" accept="image/*" />
+      </div>
+      <hr>
+      <div class="controles">
+          <label for="cantidadPorciones">
+              Porciones
+              <input type="number" id="cantidadPorciones" name="cantidadPorciones" min="1" value="1" />
+          </label>
+          <label for="colorPorcion">
+              Color de Porción
+              <input type="color" id="colorPorcion" name="colorPorcion" />
+          </label>
       </div>
   </div>
  </div>

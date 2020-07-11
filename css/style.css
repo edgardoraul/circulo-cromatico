@@ -530,16 +530,19 @@ body {
   -ms-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   border-radius: 50%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   display: inline-block;
   max-width: 450px;
+  max-height: 450px;
   overflow: hidden;
 }
-.circulo img {
+.circulo img,
+.circulo svg,
+.circulo canvas {
+  border: 1px solid #f00;
+  border-radius: 50%;
   display: block;
-  width: 100%;
+  height: 300px;
+  width: 300px;
 }
 .controles {
   padding: 0.5rem;
