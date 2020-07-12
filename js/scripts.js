@@ -1,3 +1,4 @@
+"use strict";
 // Constantes
 const acelerador = document.getElementById("rpm");
 
@@ -5,11 +6,13 @@ const acelerador = document.getElementById("rpm");
 acelerador.addEventListener('change', acelerar);
 
 // Acelera con css las revoluciones por minuto y las muestra
-function acelerar(valor)
+function acelerar()
 {
-    let resultado = acelerador.value * 360;
-    document.getElementById("rpmNumero").innerText = resultado / 10;
-    console.log(resultado);
+    let resultado = acelerador.value * 360 * 10;
+    console.log(acelerador.value);
+
+    document.getElementById("rpmNumero").innerText = acelerador.value * 10;
+
     document.getElementById("movimiento").innerHTML = `
     @-moz-keyframes girador {
         0% {
@@ -78,7 +81,7 @@ function acelerar(valor)
     `;
 }
 
-
+/*
 const $seleccionArchivos = document.querySelector("#seleccionArchivos");
 const $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
 
@@ -105,7 +108,7 @@ seleccionArchivos.addEventListener("change", () => {
     imagenPrevisualizacion.src = objectURL;
 });
 
-/*
+
 Dibujaremos con Canvas el círculo cromático.
 
 El algoritmo consiste en:
@@ -126,14 +129,33 @@ El algoritmo consiste en:
 */
 
 // Tomando el canvas y brindando contexto
-const canvas = document.getElementById('circulin');
-canvas.getContext('2d');
+const canv = document.getElementById('circulin');
+let canvitas = canv.getContext('2d');
 
 // El centro del círculo (x,y), cuyo sector vamos a dibujar.
-let X = canvas.width / 2;
-let Y = canvas.height / 2;
-let R = canvas.width / 2;
-console.log(X, Y, R);
+let X = canv.width / 2;
+let Y = canv.height / 2;
+let R = canv.width / 2;
+
+// Suponemos que los colores son los primarios
+let colorArreglo = [
+    'rgba(237, 48, 56, 1)',
+    'rgba(12, 177, 75, 1)',
+    'rgba(65, 68, 155, 1)'
+];
+
+// Cantidad de porciones elegidas
+const cantidad = document.getElementById('cantidadPorciones');
+let porciones = cantidad.value;
+console.log(porciones);
+cantidad.addEventListener('change', function(){
+    porciones = cantidad.value;
+    console.log(porciones);
+    porcionador();
+});
+
+// Matriz que irá conteniendo cada una de las porciones
+const porcionesArreglo = [];
 
 // Clase que representa una porción del círculo
 class PorcionCircular
@@ -145,61 +167,60 @@ class PorcionCircular
         this.colorRelleno = colorRelleno;
         this.radio = radio;
     }
-
-    // el ángulo de partida AP y el ángulo final AF
-    let AP = (Math.PI / 180) * 0;
-    let AF = (Math.PI / 180) * 120;
-
-    // Las coordenadas del punto de partida en la circunferencia
-    let Xap = X + R * Math.cos(AP);
-    let Yap = Y + R * Math.sin(AP);
 }
 
 
 // Función que dibuja
-function dibujador(AnguloPartida, AnguloLlegada, ColorRelleno, Radio, Xinicial, Yinicial)
+function dibujador(AnguloPartida, AnguloLlegada, ColorRelleno, Radio)
 {
-    canvas.beginPath();
-    canvas.fillStyle = ColorRelleno;
-    canvas.moveTo(Xinicial,Yinicial);
-    canvas.arc(Xinicial, Yinicial, Radio, AnguloPartida, AnguloLlegada);
-    canvas.closePath();
-    canvas.fill();
-}
-
-// Función que dibuja por activación del botón
-function dibujoPorClick()
-{
+    // el ángulo de partida AP y el ángulo final AF
+    let AngPart = (Math.PI / 180) * AnguloPartida;
+    let AngFin = (Math.PI / 180) * AnguloLlegada;
     
+    // Las coordenadas del punto de partida en la circunferencia
+    let Xap = X + Radio * Math.sin(AngPart);
+    let Yap = Y + Radio * Math.cos(AngFin);
+    
+    // Comenzando el dibujo
+    canvitas.beginPath();
+    canvitas.fillStyle = ColorRelleno;
+    canvitas.moveTo(X,Y);
+    canvitas.arc(X, Y, Radio, AngPart, AngFin, true);
+    canvitas.fill();
+    canvitas.closePath();
 }
 
-if(canvas && canvas.getContext)
+
+// Creación de las porciones por bucle
+function porcionador()
 {
-    let ctx = canvas.getContext('2d');
-    if(ctx)
+    for(let i = 0; i < porciones; i++ )
     {
-        // El centro del círculo (x,y), cuyo sector vamos a dibujar.
-        let X = canvas.width / 2;
-        let Y = canvas.height / 2;
-        let R = canvas.width / 2;
-        console.log(X, Y, R);
-
-        // el ángulo de partida AP y el ángulo final AF
-        let AP = (Math.PI / 180) * 0;
-        let AF = (Math.PI / 180) * 120;
-
-        // Las coordenadas del punto de partida en la circunferencia
-        let Xap = X + R * Math.cos(AP);
-        let Yap = Y + R * Math.sin(AP);
-
-        // Estilos
-        ctx.fillStyle = "#abcdef";
-
-        // Comenzando a dibujar
-        ctx.beginPath();
-        ctx.moveTo(X,Y);
-        ctx.arc(X,Y,R,AP,AF);
-        ctx.closePath();
-        ctx.fill();
+        // Angulo máximo disponible para cada porción
+        let angPosibles = 360 / porciones;
+    
+        // Creación de las instancias de los objetos de las porciones
+        porcionesArreglo.push(
+            new PorcionCircular(
+    
+                // Angulo de partida
+                -i * angPosibles,
+    
+                // Angulo de llegada
+                -(i + 1) * angPosibles,
+                
+                // Color elegido
+                colorArreglo[i],
+    
+                // Radio
+                R
+            )
+        );
+    
+        // Mostrando por Consola
+        console.log(porcionesArreglo[i]);
+    
+        // Dibujando las porciones
+        dibujador(porcionesArreglo[i].anguloPartida, porcionesArreglo[i].anguloLlegada, porcionesArreglo[i].colorRelleno, porcionesArreglo[i].radio );
     }
 }
