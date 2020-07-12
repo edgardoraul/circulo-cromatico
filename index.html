@@ -32,13 +32,14 @@
       <hr>
       <div class="controles">
           <label for="cantidadPorciones">
-              Porciones
-              <input type="number" id="cantidadPorciones" name="cantidadPorciones" min="1" value="1" />
+              Porciones: <span id="cantPorciones">2</span>
+              <br />
+              <input type="range" class="slider" id="cantidadPorciones" name="cantidadPorciones" min="2" step="1" max="10" value="2" />
           </label>
-          <label for="colorPorcion">
+          <!-- <label for="colorPorcion">
               Color de Porción
               <input type="color" id="colorPorcion" name="colorPorcion" />
-          </label>
+          </label> -->
       </div>
   </div>
  </div>

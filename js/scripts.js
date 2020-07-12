@@ -139,23 +139,30 @@ let R = canv.width / 2;
 
 // Suponemos que los colores son los primarios
 let colorArreglo = [
-    'rgba(237, 48, 56, 1)',
-    'rgba(12, 177, 75, 1)',
-    'rgba(65, 68, 155, 1)'
+    'rgb(255, 0, 0)',
+    'rgb(255, 0, 255)',
+    'rgb(0, 0, 255)',
+    'rgb(0, 255, 255)',
+    'rgb(0, 255, 0)',
+    'rgb(255, 255, 0)',
+    'rgb(128, 0, 255)',
+    'rgb(0, 128, 255)',
+    'rgb(0, 255, 128)',
+    'rgb(255, 128, 128)',
 ];
 
 // Cantidad de porciones elegidas
 const cantidad = document.getElementById('cantidadPorciones');
 let porciones = cantidad.value;
 console.log(porciones);
-cantidad.addEventListener('change', function(){
+cantidad.addEventListener('change', function()
+{
     porciones = cantidad.value;
+    document.getElementById('cantPorciones').innerText = porciones;
     console.log(porciones);
-    porcionador();
+    porcionador(porciones);
 });
 
-// Matriz que irá conteniendo cada una de las porciones
-const porcionesArreglo = [];
 
 // Clase que representa una porción del círculo
 class PorcionCircular
@@ -192,20 +199,23 @@ function dibujador(AnguloPartida, AnguloLlegada, ColorRelleno, Radio)
 
 
 // Creación de las porciones por bucle
-function porcionador()
+function porcionador(p)
 {
-    for(let i = 0; i < porciones; i++ )
+    // Matriz que irá conteniendo cada una de las porciones
+    const porcionesArreglo = [];
+
+    for(let i = 0; i < p; i++ )
     {
         // Angulo máximo disponible para cada porción
-        let angPosibles = 360 / porciones;
-    
+        let angPosibles = 360 / p;
+        
         // Creación de las instancias de los objetos de las porciones
         porcionesArreglo.push(
             new PorcionCircular(
-    
+                
                 // Angulo de partida
                 -i * angPosibles,
-    
+                
                 // Angulo de llegada
                 -(i + 1) * angPosibles,
                 
@@ -217,10 +227,12 @@ function porcionador()
             )
         );
     
-        // Mostrando por Consola
-        console.log(porcionesArreglo[i]);
-    
         // Dibujando las porciones
         dibujador(porcionesArreglo[i].anguloPartida, porcionesArreglo[i].anguloLlegada, porcionesArreglo[i].colorRelleno, porcionesArreglo[i].radio );
     }
+
+    // Mostrando por Consola
+    console.clear();
+    console.log(porcionesArreglo);
 }
+porcionador(porciones);

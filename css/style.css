@@ -499,6 +499,7 @@ table {
   box-sizing: border-box;
   text-align: center;
 }
+transition all 0.3s linear,
 ::-webkit-scrollbar {
   display: none;
 }
@@ -547,7 +548,7 @@ body {
   padding: 0.5rem;
 }
 input[type=range].slider {
-  width: 70%;
+  width: 60%;
   margin: 1.5rem 0;
   background-color: transparent;
   -webkit-appearance: none;
