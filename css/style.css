@@ -493,21 +493,144 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+.slider {
+  background-color: transparent;
+  display: inline;
+  margin: 1.5rem 0;
+  width: 100%;
+  -webkit-appearance: none;
+}
+.slider::-webkit-slider-runnable-track {
+  background: #bbb;
+  border: 0;
+  cursor: pointer;
+  height: 32px;
+  width: 100%;
+}
+.slider::-webkit-slider-thumb {
+  background: #5c837d;
+  border: 1.9px solid rgba(0,30,0,0.57);
+  border-radius: 50%;
+  cursor: pointer;
+  height: 32px;
+  margin-top: 0px;
+  width: 32px;
+  -webkit-appearance: none;
+}
+.slider:-webkit-slider-runnable-track {
+  background: #523663;
+}
+.slider::-moz-range-track {
+  background: #547871;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  height: 22px;
+  width: 100%;
+}
+.slider::-moz-range-thumb {
+  background: #5c837d;
+  border: 1.9px solid rgba(0,30,0,0.57);
+  border-radius: 50%;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+}
+.slider::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 0.8px 0;
+  color: transparent;
+  cursor: pointer;
+  height: 32px;
+  width: 100%;
+}
+.slider::-ms-fill-lower {
+  background: #ffffa8;
+  border: 0;
+}
+.slider::-ms-fill-upper {
+  background: #ffffd6;
+  border: 0;
+}
+.slider::-ms-thumb {
+  background: #5c837d;
+  border: 1.9px solid rgba(0,30,0,0.57);
+  border-radius: 4px;
+  cursor: pointer;
+  height: 32px;
+  margin-top: 0px;
+  width: 32px;
+}
+.slider:focus::-ms-fill-lower {
+  background: #ffffd6;
+}
+.slider:focus::-ms-fill-upper {
+  background: #fff;
+}
+@media all and (min-width: 720px) {
+  .slider {
+    width: 70%;
+  }
+}
+.controles .paletitas {
+  display: inline-block;
+  background: none;
+  border: none;
+  height: 0;
+  position: relative;
+  width: 0;
+  z-index: 0;
+}
+#colorizadores label {
+  border-radius: 20px;
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.2rem 0.5rem;
+  position: relative;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#colorizadores label:hover,
+#colorizadores label:active {
+  background: rgba(84,120,113,0.7);
+  color: #fff;
+  cursor: pointer;
+}
+#colorizadores label:before {
+  background: #547871;
+  border: 1px solid #666;
+  border-radius: 20px;
+  content: "";
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 25px;
+  width: 25px;
+  z-index: 1;
+}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   text-align: center;
 }
-transition all 0.3s linear,
-::-webkit-scrollbar {
-  display: none;
-}
 body {
   color: #555;
 }
 .contenedor {
   padding: 1rem;
+}
+.paletitas,
+background none,
+border none,
+.controles {
+  padding: 0.5rem;
 }
 .circulo {
   -webkit-animation-name: girador;
@@ -535,103 +658,13 @@ body {
   max-width: 450px;
   max-height: 450px;
   overflow: hidden;
+img
 }
-.circulo img,
-.circulo svg,
-.circulo canvas {
+canvas,
+svg {
   border-radius: 50%;
   display: block;
-  height: 300px;
-  width: 300px;
-}
-.controles {
-  padding: 0.5rem;
-}
-input[type=range].slider {
-  width: 60%;
-  margin: 1.5rem 0;
-  background-color: transparent;
-  -webkit-appearance: none;
-  display: inline;
-}
-input[type=range].slider:focus {
-  outline: none;
-}
-input[type=range].slider::-webkit-slider-runnable-track {
-  background: #bbb;
-  border: 0;
-  width: 100%;
-  height: 32px;
-  cursor: pointer;
-}
-input[type=range].slider::-webkit-slider-thumb {
-  margin-top: 0px;
-  width: 32px;
-  height: 32px;
-  background: #5c837d;
-  border: 1.9px solid rgba(0,30,0,0.57);
-  border-radius: 50%;
-  cursor: pointer;
-  -webkit-appearance: none;
-}
-input[type=range].slider:focus::-webkit-slider-runnable-track {
-  background: #523663;
-}
-input[type=range].slider::-moz-range-track {
-  background: #547871;
-  border-radius: 12px;
-  border: 0;
-  width: 100%;
-  height: 22px;
-  cursor: pointer;
-}
-input[type=range].slider::-moz-range-thumb {
-  width: 32px;
-  height: 32px;
-  background: #5c837d;
-  border: 1.9px solid rgba(0,30,0,0.57);
-  border-radius: 50%;
-  cursor: pointer;
-}
-input[type=range].slider::-ms-track {
-  background: transparent;
-  border-color: transparent;
-  border-width: 0.8px 0;
-  color: transparent;
-  width: 100%;
-  height: 32px;
-  cursor: pointer;
-}
-input[type=range].slider::-ms-fill-lower {
-  background: #ffffa8;
-  border: 0;
-}
-input[type=range].slider::-ms-fill-upper {
-  background: #ffffd6;
-  border: 0;
-}
-input[type=range].slider::-ms-thumb {
-  width: 32px;
-  height: 32px;
-  background: #5c837d;
-  border: 1.9px solid rgba(0,30,0,0.57);
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 0px;
-/*Needed to keep the Edge thumb centred*/
-}
-input[type=range].slider:focus::-ms-fill-lower {
-  background: #ffffd6;
-}
-input[type=range].slider:focus::-ms-fill-upper {
-  background: #fff;
-}
-/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
-how to remove the virtical space around the range input in IE*/
-@supports (-ms-ime-align: auto) {
-  input[type=range].slider {
-    margin: 0;
-/*Edge starts the margin from the thumb, not the track as other browsers do*/
-  }
+  height: 280px;
+  width: 280px;
 }
 /*# sourceMappingURL=style.css.map */

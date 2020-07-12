@@ -1,4 +1,3 @@
-"use strict";
 // Constantes
 const acelerador = document.getElementById("rpm");
 
@@ -137,29 +136,43 @@ let X = canv.width / 2;
 let Y = canv.height / 2;
 let R = canv.width / 2;
 
+
 // Suponemos que los colores son los primarios
 let colorArreglo = [
     'rgb(255, 0, 0)',
-    'rgb(255, 0, 255)',
-    'rgb(0, 0, 255)',
-    'rgb(0, 255, 255)',
-    'rgb(0, 255, 0)',
+    'rgb(255, 127, 0)',
     'rgb(255, 255, 0)',
-    'rgb(128, 0, 255)',
+    'rgb(0, 189, 63)',
+    'rgb(0, 104, 255)',
+    'rgb(122, 0, 231)',
+    'rgb(211, 0, 201)',
     'rgb(0, 128, 255)',
     'rgb(0, 255, 128)',
     'rgb(255, 128, 128)',
 ];
 
+// Toma todos los input tipo color piquer
+const piquers = document.querySelectorAll('.paletitas');
+console.log(piquers);
+
+// Función que agrega los inputs color
+function insertador(ev)
+{
+    const inputador = document.createElement('label');
+    inputador.setAttribute('for', `colorpiquer_${ev}`);
+    inputador.innerHTML = `Porción: <span id="colorpiqueryelenda_${ev}">${ev}</span>
+    <input class="paletitas" type="color" name="colorpiquer_${ev}" id="colorpiquer_${ev}" value="rgb(200, 200, 200)" />`;
+    return;
+}
+
 // Cantidad de porciones elegidas
 const cantidad = document.getElementById('cantidadPorciones');
 let porciones = cantidad.value;
-console.log(porciones);
+
 cantidad.addEventListener('change', function()
 {
     porciones = cantidad.value;
     document.getElementById('cantPorciones').innerText = porciones;
-    console.log(porciones);
     porcionador(porciones);
 });
 
@@ -229,10 +242,12 @@ function porcionador(p)
     
         // Dibujando las porciones
         dibujador(porcionesArreglo[i].anguloPartida, porcionesArreglo[i].anguloLlegada, porcionesArreglo[i].colorRelleno, porcionesArreglo[i].radio );
-    }
 
-    // Mostrando por Consola
-    console.clear();
-    console.log(porcionesArreglo);
+       /*  if(i > 2)
+        {
+            // Inserta los inputs tipos color piquers.
+            document.getElementById('colorizadores').appendChild(insertador(i+1));
+        } */
+    }
 }
 porcionador(porciones);

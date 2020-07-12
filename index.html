@@ -14,9 +14,8 @@
  </header>
  <div class="contenedor">
   <div class="circulo">
-   <canvas id="circulin" width="300" height="300"></canvas>
+   <canvas id="circulin" width="280px" height="280px"></canvas>
 
-   <!--<img src="img/circulo2.png" alt="Círculo Cromático" id="imagenPrevisualizacion" />-->
   </div>
   <div class="controles">
       <div class="rpm">
@@ -25,10 +24,6 @@
             <input name="rpm" id="rpm" class="slider" type="range" value="0" step="1" min="0" max="300" />
           </label>
       </div>
-      <!-- <div class="subirarchivo">
-          <label for="seleccionArchivos">Subir Imagen</label>
-          <input type="file" name="seleccionArchivos" id="seleccionArchivos" value="" accept="image/*" />
-      </div> -->
       <hr>
       <div class="controles">
           <label for="cantidadPorciones">
@@ -36,10 +31,18 @@
               <br />
               <input type="range" class="slider" id="cantidadPorciones" name="cantidadPorciones" min="2" step="1" max="10" value="2" />
           </label>
-          <!-- <label for="colorPorcion">
-              Color de Porción
-              <input type="color" id="colorPorcion" name="colorPorcion" />
-          </label> -->
+      </div>
+      <hr />
+      <div class="controles" id="colorizadores">
+          <label for="colorpiquer_1">
+            Porción: <span id="colorpiquerleyenda_1">1</span>
+            <input class="paletitas" type="color" name="colorpiquer_1" id="colorpiquer_1" value="rgb(255, 0, 0)" />
+          </label>
+
+          <label for="colorpiquer_2">
+            Porción: <span id="colorpiqueryelenda_2">2</span>
+            <input class="paletitas" type="color" name="colorpiquer_2" id="colorpiquer_2" value="rgb(255, 127, 0)" />
+          </label>
       </div>
   </div>
  </div>

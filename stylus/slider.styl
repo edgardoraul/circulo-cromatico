@@ -1,0 +1,79 @@
+.slider
+    background-color transparent  
+    display inline
+    margin 1.5rem 0
+    width 100%
+    -webkit-appearance none
+
+    &::-webkit-slider-runnable-track
+        background #bbb
+        border 0
+        cursor pointer
+        height 32px
+        width 100%
+
+    &::-webkit-slider-thumb
+        background #5c837d
+        border 1.9px solid rgba(0, 30, 0, 0.57)
+        border-radius 50%
+        cursor pointer
+        height 32px
+        margin-top 0px
+        width 32px
+        -webkit-appearance none
+
+    &:-webkit-slider-runnable-track
+        background #523663
+
+    &::-moz-range-track
+        background #547871
+        border-radius 12px
+        border 0
+        cursor pointer
+        height 22px
+        width 100%
+
+    &::-moz-range-thumb
+        background #5c837d
+        border 1.9px solid rgba(0, 30, 0, 0.57)
+        border-radius 50%
+        cursor pointer
+        height 32px
+        width 32px
+
+    &::-ms-track
+        background transparent
+        border-color transparent
+        border-width 0.8px 0
+        color transparent
+        cursor pointer
+        height 32px
+        width 100%
+
+    &::-ms-fill-lower
+        background #ffffa8
+        border 0
+
+    &::-ms-fill-upper
+        background #ffffd6
+        border 0
+
+    &::-ms-thumb
+        background #5c837d
+        border 1.9px solid rgba(0, 30, 0, 0.57)
+        border-radius 4px
+        cursor pointer
+        height 32px
+        margin-top 0px
+        width 32px
+
+    &:focus
+        &::-ms-fill-lower
+            background #ffffd6
+        
+        &::-ms-fill-upper
+            background #fff
+
+@media all and (min-width 720px)
+    .slider
+        width 70%

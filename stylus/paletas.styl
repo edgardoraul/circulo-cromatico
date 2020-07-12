@@ -1,0 +1,37 @@
+.controles
+    .paletitas
+        display inline-block
+        background none
+        border none
+        height 0
+        position relative
+        width 0
+        z-index 0
+
+#colorizadores
+    label
+        border-radius 20px
+        display inline-block
+        margin-right 1rem
+        padding 0.2rem 0.5rem
+        position relative
+        transition all 0.3s ease-in-out
+        &:hover
+        &:active
+            background rgba(84, 120, 113, 0.7)
+            color #fff
+            cursor pointer
+
+        &:before
+            background rgb(84, 120, 113)
+            border 1px solid #666
+            border-radius 20px
+            content ""
+            display inline-block
+            height 100%
+            position absolute
+            right 0
+            top 0
+            height 25px
+            width 25px
+            z-index 1
