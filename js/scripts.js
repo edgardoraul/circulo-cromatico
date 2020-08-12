@@ -138,8 +138,8 @@ let R = canv.width / 2;
 ]; */
 let colorArreglo = [
     "rgb(255, 0, 0)",
-    "rgb(255, 127, 0)",
-    "rgb(255, 255, 0)"
+    "rgb(255, 255, 0)",
+    "rgb(0, 0, 255)",
 ];
 
 // Clase que representa una porción del círculo
@@ -222,6 +222,9 @@ porcionador(porciones);
 /* BOTONES DE AGREGAR Y RESTAR PORCIONES =================== */
 window.addEventListener("DOMContentLoaded", function()
 {
+    // Listado dinámico de los botones de selector de colores
+    const listadoColorPiquers = document.getElementById("colorizadores");
+    
     // Suma de a uno por vez
     const botonSumar = document.getElementById("botonSumar");
     botonSumar.addEventListener("click", actualizarValorMas);
@@ -233,9 +236,19 @@ window.addEventListener("DOMContentLoaded", function()
         let cantPorciones = document.getElementById("cantPorciones");
         cantPorciones.innerText = porciones;
         porcionador(porciones);
-        console.log(porciones);
+        
+        // Agrega un botón de color piquer
+        let itemContenido = `<label for="colorpiquer_${porciones}">Porción
+        <span id="colorpiquerleyenda_${porciones}">${porciones}</span>
+        <input class="paletitas" type="color" name="colorpiquer_${porciones}" id="colorpiquer_${porciones}" value="rgb(0, 0, 255)" /><span style="background: rgb(0, 0, 255);" class="controles__muestrario" id="colorpiquer_${porciones}__muestrario">
+        </span>
+        </label>`;
+        let itemElemento = document.createElement("span");
+        itemElemento.innerHTML = itemContenido;
+        listadoColorPiquers.appendChild(itemElemento);
+        console.log(listadoColorPiquers.children);
     }
-
+    
     
     // Resta de a uno por vez hasta llegar al valor 2
     const botonRestar = document.getElementById("botonRestar");
@@ -250,7 +263,10 @@ window.addEventListener("DOMContentLoaded", function()
             let cantPorciones = document.getElementById("cantPorciones");
             cantPorciones.innerText = porciones;
             porcionador(porciones);
-            console.log(porciones);
+
+            // Resta un botón de color piquer
+            listadoColorPiquers.lastChild.remove();
+            console.log(listadoColorPiquers.children);
         }
     }   
 });
