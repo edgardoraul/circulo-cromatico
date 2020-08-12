@@ -1,7 +1,18 @@
-// Constantes
-const acelerador = document.getElementById("rpm");
+/* DOCUMENTACION
 
-// Escuchar los cambios en el rango
+Compuesto por varias secciones
+- Constructor del círculo. Función que lo dibuja.
+- Velocímetro del círculo. Control de Velocidad.
+- Selector que agrega o resta porciones al círculo.
+- Selectores de color de cada porción. 
+
+*/
+
+
+/* ================================================
+    Velocímetro del círculo. Control de Velocidad.
+*/
+const acelerador = document.getElementById("rpm");
 acelerador.addEventListener('change', acelerar);
 
 // Acelera con css las revoluciones por minuto y las muestra
@@ -79,55 +90,31 @@ function acelerar()
       }
     `;
 }
-
-/*
-const $seleccionArchivos = document.querySelector("#seleccionArchivos");
-const $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
-
-// Escuchar cuando cambie
-seleccionArchivos.addEventListener("change", () => {
-    
-    // Los archivos seleccionados, pueden ser muchos o uno
-    const archivos = seleccionArchivos.files;
-    
-    // Si no hay archivos salimos de la función y quitamos la imagen
-    if (!archivos || !archivos.length)
-    {
-        imagenPrevisualizacion.src = "";
-        return;
-    }
-    
-    // Ahora tomamos el primer archivo, el cual vamos a previsualizar
-    const primerArchivo = archivos[0];
-    
-    // Lo convertimos a un objeto de tipo objectURL
-    const objectURL = URL.createObjectURL(primerArchivo);
-    
-    // Y a la fuente de la imagen le ponemos el objectURL
-    imagenPrevisualizacion.src = objectURL;
-});
+// --------------------------------------------------------- 
 
 
-Dibujaremos con Canvas el círculo cromático.
-
-El algoritmo consiste en:
-1. Crear un círculo divido en porciones.
-2. Las porciones son dinámicas.
-3. Los bordes también son dinámicos.
-4. El relleno es dinámico.
-5. El ángulo de cada porción es automático o dinámico; dependiendo de cómo lo diga el usuario.
-6. Hay un botón de agregar o remover porciones. Por defecto 3.
-7. Tiene un selector para colocar el color.
-8. Y otro selector para colocar el ángulo. Muestra los ángulos restantes que quedan por asignar.
-9. Hay una función que dibuja y toma varios parámetros.
-10. Hay una clase que crea instancias. Cada instancia es una porción que se dibuja.
-11. Hay otra función que toma datos del usuario y se los pasa a la función que dibuja.
-12. También hay otra función que guarda los datos en localstorage y los recupera.
-13. Existe una estructura de control que chequea: si hay información guardada en localstorage, la extrea y construye el círculo.
-14. Hay otra función que resetea y borra todo.
+/* ============================================================
+    Selector que agrega o resta porciones al círculo.
 */
+const cantidad = document.getElementById('cantidadPorciones');
+let porciones = cantidad.value;
 
-// Tomando el canvas y brindando contexto
+// Agrega o resta porciones de acuerdo a la cantidad elegida por el usuario
+cantidad.addEventListener('change', function()
+{
+    porciones = cantidad.value;
+    document.getElementById('cantPorciones').innerText = porciones;
+    porcionador(porciones);
+
+    // Insertarndo los selectores del color de la respectiva porción.
+    insertador(porciones);
+});
+// ----------------------------------------------------------------
+
+
+/* ============================================================
+   Constructor del círculo. Función que lo dibuja.
+*/
 const canv = document.getElementById('circulin');
 let canvitas = canv.getContext('2d');
 
@@ -136,9 +123,8 @@ let X = canv.width / 2;
 let Y = canv.height / 2;
 let R = canv.width / 2;
 
-
 // Suponemos que los colores son los primarios
-let colorArreglo = [
+/* let colorArreglo = [
     'rgb(255, 0, 0)',
     'rgb(255, 127, 0)',
     'rgb(255, 255, 0)',
@@ -149,33 +135,12 @@ let colorArreglo = [
     'rgb(0, 128, 255)',
     'rgb(0, 255, 128)',
     'rgb(255, 128, 128)',
+]; */
+let colorArreglo = [
+    "rgb(255, 0, 0)",
+    "rgb(255, 127, 0)",
+    "rgb(255, 255, 0)"
 ];
-
-// Toma todos los input tipo color piquer
-const piquers = document.querySelectorAll('.paletitas');
-console.log(piquers);
-
-// Función que agrega los inputs color
-function insertador(ev)
-{
-    const inputador = document.createElement('label');
-    inputador.setAttribute('for', `colorpiquer_${ev}`);
-    inputador.innerHTML = `Porción: <span id="colorpiqueryelenda_${ev}">${ev}</span>
-    <input class="paletitas" type="color" name="colorpiquer_${ev}" id="colorpiquer_${ev}" value="rgb(200, 200, 200)" />`;
-    return;
-}
-
-// Cantidad de porciones elegidas
-const cantidad = document.getElementById('cantidadPorciones');
-let porciones = cantidad.value;
-
-cantidad.addEventListener('change', function()
-{
-    porciones = cantidad.value;
-    document.getElementById('cantPorciones').innerText = porciones;
-    porcionador(porciones);
-});
-
 
 // Clase que representa una porción del círculo
 class PorcionCircular
@@ -242,12 +207,50 @@ function porcionador(p)
     
         // Dibujando las porciones
         dibujador(porcionesArreglo[i].anguloPartida, porcionesArreglo[i].anguloLlegada, porcionesArreglo[i].colorRelleno, porcionesArreglo[i].radio );
-
-       /*  if(i > 2)
-        {
-            // Inserta los inputs tipos color piquers.
-            document.getElementById('colorizadores').appendChild(insertador(i+1));
-        } */
     }
 }
 porcionador(porciones);
+// -------------------------------------------------------
+
+
+/* COLORPIQUER. MUESTRA EL CAMBIO DE COLOR =================== */
+// A desarrollar...
+
+// ------------------------------------------------------------
+
+
+/* BOTONES DE AGREGAR Y RESTAR PORCIONES =================== */
+window.addEventListener("DOMContentLoaded", function()
+{
+    // Suma de a uno por vez
+    const botonSumar = document.getElementById("botonSumar");
+    botonSumar.addEventListener("click", actualizarValorMas);
+    function actualizarValorMas()
+    {
+        ++porciones;
+        cantidad.value = porciones;
+        
+        let cantPorciones = document.getElementById("cantPorciones");
+        cantPorciones.innerText = porciones;
+        porcionador(porciones);
+        console.log(porciones);
+    }
+
+    
+    // Resta de a uno por vez hasta llegar al valor 2
+    const botonRestar = document.getElementById("botonRestar");
+    botonRestar.addEventListener("click", actualizarValorMenos);
+    function actualizarValorMenos()
+    {
+        if(porciones > 2)
+        {
+            --porciones;
+            cantidad.value = porciones;
+    
+            let cantPorciones = document.getElementById("cantPorciones");
+            cantPorciones.innerText = porciones;
+            porcionador(porciones);
+            console.log(porciones);
+        }
+    }   
+});
