@@ -615,7 +615,6 @@ table {
   font-family: monospace;
   font-size: 2rem;
   padding: 0.4rem 0.9rem;
-  margin-left: 1rem;
 }
 .controles__boton:hover {
   background: rgba(84,120,113,0.7);
@@ -630,7 +629,7 @@ table {
 #colorizadores label {
   border-radius: 20px;
   display: inline-block;
-  margin-right: 2rem;
+  margin-right: 0.5rem;
   padding: 0.2rem 0.5rem;
   position: relative;
   -webkit-transition: all 0.3s ease-in-out;
@@ -638,18 +637,6 @@ table {
   -o-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-/* &:before
-            background-color transparent
-            border 1px solid $color_borde
-            border-radius 20px
-            content ""
-            display inline-block
-            height 25px
-            position absolute
-            right 0
-            top 0
-            width 25px
-            z-index 1 */
 }
 #colorizadores label:hover,
 #colorizadores label:active {
