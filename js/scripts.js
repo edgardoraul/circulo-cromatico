@@ -128,7 +128,7 @@ function circuloCromatico()
     let R = canv.width / 2;
 
     // Suponemos que los colores son los primarios
-    /* let colorArreglo = [
+    let colorArreglo = [
         'rgb(255, 0, 0)',
         'rgb(255, 127, 0)',
         'rgb(255, 255, 0)',
@@ -139,12 +139,12 @@ function circuloCromatico()
         'rgb(0, 128, 255)',
         'rgb(0, 255, 128)',
         'rgb(255, 128, 128)',
-    ]; */
-    let colorArreglo = [
+    ];
+/*     let colorArreglo = [
         "rgb(255, 0, 0)",
         "rgb(255, 255, 0)",
         "rgb(0, 0, 255)",
-    ];
+    ]; */
 
     // Clase que representa una porción del círculo
     class PorcionCircular {
