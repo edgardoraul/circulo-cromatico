@@ -10,6 +10,9 @@ function circuloCromatico()
     - Selectores de color de cada porción. 
     
     */
+    
+    // Reinicializando unas variables
+    let porciones = 0;
 
 
     /* ================================================
@@ -99,7 +102,7 @@ function circuloCromatico()
         Selector que agrega o resta porciones al círculo.
     */
     const cantidad = document.getElementById('cantidadPorciones');
-    let porciones = cantidad.value;
+    porciones = cantidad.value;
 
     // Agrega o resta porciones de acuerdo a la cantidad elegida por el usuario
     cantidad.addEventListener('change', function () {
@@ -209,21 +212,17 @@ function circuloCromatico()
     // -------------------------------------------------------
 
 
-    /* COLORPIQUER. MUESTRA EL CAMBIO DE COLOR =================== */
-    // A desarrollar...
-
-    // ------------------------------------------------------------
-
-
     /* BOTONES DE AGREGAR Y RESTAR PORCIONES =================== */
-    
-        // Listado dinámico de los botones de selector de colores
-        const listadoColorPiquers = document.getElementById("colorizadores");
-    
-        // Suma de a uno por vez
-        const botonSumar = document.getElementById("botonSumar");
-        botonSumar.addEventListener("click", actualizarValorMas);
-        function actualizarValorMas() {
+    // Listado dinámico de los botones de selector de colores
+    const listadoColorPiquers = document.getElementById("colorizadores");
+
+    // Suma de a uno por vez
+    const botonSumar = document.getElementById("botonSumar");
+    botonSumar.addEventListener("click", actualizarValorMas);
+    function actualizarValorMas() {
+        if (porciones >= 2)
+        {
+            
             ++porciones;
             cantidad.value = porciones;
         
@@ -233,32 +232,36 @@ function circuloCromatico()
         
             // Agrega un botón de color piquer
             let itemContenido = `<label for="colorpiquer_${porciones}">Porción
-        <span id="colorpiquerleyenda_${porciones}">${porciones}</span>
-        <input class="paletitas" type="color" name="colorpiquer_${porciones}" id="colorpiquer_${porciones}" value="rgb(0, 0, 255)" /><span style="background: rgb(0, 0, 255);" class="controles__muestrario" id="colorpiquer_${porciones}__muestrario">
-        </span>
-        </label>`;
+                <span id="colorpiquerleyenda_${porciones}">${porciones}</span>
+                <input class="paletitas" type="color" name="colorpiquer_${porciones}" id="colorpiquer_${porciones}" value="rgb(0, 0, 255)" /><span style="background: rgb(0, 0, 255);" class="controles__muestrario" id="colorpiquer_${porciones}__muestrario">
+                </span>
+                </label>`;
             let itemElemento = document.createElement("span");
             itemElemento.innerHTML = itemContenido;
             listadoColorPiquers.appendChild(itemElemento);
             console.log(listadoColorPiquers.children);
         }
-    
-    
-        // Resta de a uno por vez hasta llegar al valor 2
-        const botonRestar = document.getElementById("botonRestar");
-        botonRestar.addEventListener("click", actualizarValorMenos);
-        function actualizarValorMenos() {
-            if (porciones > 2) {
-                --porciones;
-                cantidad.value = porciones;
-    
-                let cantPorciones = document.getElementById("cantPorciones");
-                cantPorciones.innerText = porciones;
-                porcionador(porciones);
+    }
 
-                // Resta un botón de color piquer
-                listadoColorPiquers.lastChild.remove();
-                console.log(listadoColorPiquers.children);
-            }
+
+    // Resta de a uno por vez hasta llegar al valor 2
+    const botonRestar = document.getElementById("botonRestar");
+    botonRestar.addEventListener("click", actualizarValorMenos);
+    function actualizarValorMenos() {
+        if (porciones > 2) {
+            --porciones;
+            cantidad.value = porciones;
+
+            let cantPorciones = document.getElementById("cantPorciones");
+            cantPorciones.innerText = porciones;
+            porcionador(porciones);
+
+            // Resta un botón de color piquer
+            listadoColorPiquers.lastChild.remove();
+            console.log(listadoColorPiquers.children);
         }
+    }
+
+    /* COLORPIQUER. MUESTRA EL CAMBIO DE COLOR =================== */
+    // Desarrollando
 }
