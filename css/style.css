@@ -581,7 +581,7 @@ table {
   transition: all 0.1s ease-in-out;
 }
 .controles {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 .controles .paletitas {
   display: inline-block;
@@ -707,7 +707,7 @@ border none,
 .circulo svg {
   border-radius: 50%;
   display: block;
-  height: 280px;
-  width: 280px;
+  height: 100%;
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */
