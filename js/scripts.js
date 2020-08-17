@@ -140,7 +140,7 @@ let R = canv.width / 2;
     'rgb(255, 128, 128)',
 ]; */
 let listadoPaletitas = document.querySelectorAll(".paletitas");
-let colorArreglo = [];
+const colorArreglo = [];
 for (let i = 0; listadoPaletitas.length > i; i++)
 {
     colorArreglo.push(listadoPaletitas[i].value);
@@ -227,8 +227,7 @@ botonSumar.addEventListener("click", actualizarValorMas);
 function actualizarValorMas()
 {
     if (porciones >= 2)
-    {
-        
+    {        
         ++porciones;
         cantidad.value = porciones;
     
@@ -245,7 +244,8 @@ function actualizarValorMas()
         let itemElemento = document.createElement("span");
         itemElemento.innerHTML = itemContenido;
         listadoColorPiquers.appendChild(itemElemento);
-        console.log(listadoColorPiquers.children);
+        // console.log(listadoColorPiquers.children);
+        cambiadorColor();
     }
 }
 
@@ -266,9 +266,27 @@ function actualizarValorMenos()
 
         // Resta un botón de color piquer
         listadoColorPiquers.lastChild.remove();
-        console.log(listadoColorPiquers.children);
+        // console.log(listadoColorPiquers.children);
     }
 }
 
 /* COLORPIQUER. MUESTRA EL CAMBIO DE COLOR =================== */
 // Desarrollando
+function cambiadorColor()
+{
+    let inputsColor = document.querySelectorAll(".paletitas");
+    let muestrarioPaletas = document.querySelectorAll(".controles__muestrario");
+    for (let i = 0; inputsColor.length > i; i++)
+    {
+        inputsColor[i].addEventListener("change", () => {
+            colorArreglo[i] = inputsColor[i].value;
+            if (colorArreglo.length > 2)
+            {
+                colorArreglo.push(inputsColor[i].value);
+            }
+            muestrarioPaletas[i].style.backgroundColor = inputsColor[i].value;
+            porcionador(porciones);
+        });
+    }
+}
+porcionador(porciones);
