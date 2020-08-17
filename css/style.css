@@ -503,7 +503,7 @@ table {
 .slider::-webkit-slider-runnable-track {
   background: #bbb;
   border: 0;
-  cursor: pointer;
+  cursor: none;
   height: 32px;
   width: 100%;
 }
@@ -511,7 +511,7 @@ table {
   background: #5c837d;
   border: 1.9px solid rgba(0,30,0,0.57);
   border-radius: 50%;
-  cursor: pointer;
+  cursor: none;
   height: 32px;
   margin-top: 0px;
   width: 32px;
@@ -524,7 +524,6 @@ table {
   background: #547871;
   border-radius: 12px;
   border: 0;
-  cursor: pointer;
   height: 22px;
   width: 100%;
 }
@@ -532,9 +531,11 @@ table {
   background: #5c837d;
   border: 1.9px solid rgba(0,30,0,0.57);
   border-radius: 50%;
-  cursor: pointer;
   height: 32px;
   width: 32px;
+}
+.slider::-moz-range-thumb:hover {
+  cursor: pointer;
 }
 .slider::-ms-track {
   background: transparent;
