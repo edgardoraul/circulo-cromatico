@@ -15,14 +15,33 @@ let porciones = 0;
 /* ================================================
     Velocímetro del círculo. Control de Velocidad.
 */
-const acelerador = document.getElementById("rpm");
+const acelerador = document.getElementById("rpm"),
+    sumaRPM = document.getElementById("botonSumarSlider"),
+    restaRPM = document.getElementById("botonRestarSlider");
+
 acelerador.addEventListener('change', acelerar);
 
+sumaRPM.addEventListener("click", () => {
+    acelerar(10);
+});
+restaRPM.addEventListener("click", () => {
+    acelerar(-10);
+});
+
 // Acelera con css las revoluciones por minuto y las muestra
-function acelerar()
+function acelerar(ev)
 {
-    let resultado = acelerador.value * 360 * 10;
+    if (ev = null)
+    {
+        ev = 0;
+    }
+    
+        
+    
+    let resultado = acelerador.value * 360 * 10 + ev;
     document.getElementById("rpmNumero").innerText = acelerador.value * 10;
+    
+
 
     document.getElementById("movimiento").innerHTML = `
 @-moz-keyframes girador {
@@ -290,3 +309,5 @@ function cambiadorColor()
     }
 }
 porcionador(porciones);
+
+/* AGREGA O RESTA 10 PUNTOS A LAS RPM */

@@ -5,8 +5,7 @@ $color_letra = #fff
 $color_rojizo = rgb(231,45,12);
 
 *
-    // color $color_borde
-    transition all 0.1s ease-in-out
+    transition all 0.1s ease-in-out !important
 
 .controles
     font-size 1.5rem
@@ -41,6 +40,7 @@ $color_rojizo = rgb(231,45,12);
         font-family monospace
         font-size 1.8rem
         padding 0.4rem 0.9rem
+        width 60px
         
         &:hover
             background $color_control
@@ -59,10 +59,28 @@ $color_rojizo = rgb(231,45,12);
         margin-right 0.5rem
         padding 0.2rem 0.5rem
         position relative
-        transition all 0.3s ease-in-out
+        transition all 0.2s ease-in-out
 
         &:hover
         &:active
             background $color_control
             color $color_letra
             cursor pointer
+
+
+.tableador
+    display table
+    width 100%
+
+    .tableado
+        display table-cell
+        margin 0
+        max-height 35px
+        line-height 150%
+    
+    .slider
+        border 2px solid $color_borde
+        background-color rgba($color_borde, 0.5)
+        margin 0 auto
+        border-radius 20px
+        overflow hidden
