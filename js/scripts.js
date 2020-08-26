@@ -21,12 +21,12 @@ const acelerador = document.getElementById("rpm"),
 
 acelerador.addEventListener('change', acelerar);
 
-sumaRPM.addEventListener("click", () => {
+/* sumaRPM.addEventListener("click", () => {
     acelerar(10);
 });
 restaRPM.addEventListener("click", () => {
     acelerar(-10);
-});
+}); */
 
 // Acelera con css las revoluciones por minuto y las muestra
 function acelerar(ev)
