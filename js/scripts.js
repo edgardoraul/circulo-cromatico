@@ -36,77 +36,73 @@ function acelerar(ev)
         ev = 0;
     }
     
-        
-    
     let resultado = acelerador.value * 360 * 10 + ev;
     document.getElementById("rpmNumero").innerText = acelerador.value * 10;
-    
-
 
     document.getElementById("movimiento").innerHTML = `
-@-moz-keyframes girador {
-    0% {
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(${resultado}deg);
-        -moz-transform: rotate(${resultado}deg);
-        -o-transform: rotate(${resultado}deg);
-        -ms-transform: rotate(${resultado}deg);
-        transform: rotate(${resultado}deg);
-    }
-    }
-    @-webkit-keyframes girador {
-    0% {
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(${resultado}deg);
-        -moz-transform: rotate(${resultado}deg);
-        -o-transform: rotate(${resultado}deg);
-        -ms-transform: rotate(${resultado}deg);
-        transform: rotate(${resultado}deg);
-    }
-    }
-    @-o-keyframes girador {
-    0% {
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(${resultado}deg);
-        -moz-transform: rotate(${resultado}deg);
-        -o-transform: rotate(${resultado}deg);
-        -ms-transform: rotate(${resultado}deg);
-        transform: rotate(${resultado}deg);
-    }
-    }
-    @keyframes girador {
-    0% {
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(${resultado}deg);
-        -moz-transform: rotate(${resultado}deg);
-        -o-transform: rotate(${resultado}deg);
-        -ms-transform: rotate(${resultado}deg);
-        transform: rotate(${resultado}deg);
-    }
+    @-moz-keyframes girador {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(${resultado}deg);
+            -moz-transform: rotate(${resultado}deg);
+            -o-transform: rotate(${resultado}deg);
+            -ms-transform: rotate(${resultado}deg);
+            transform: rotate(${resultado}deg);
+        }
+        }
+        @-webkit-keyframes girador {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(${resultado}deg);
+            -moz-transform: rotate(${resultado}deg);
+            -o-transform: rotate(${resultado}deg);
+            -ms-transform: rotate(${resultado}deg);
+            transform: rotate(${resultado}deg);
+        }
+        }
+        @-o-keyframes girador {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(${resultado}deg);
+            -moz-transform: rotate(${resultado}deg);
+            -o-transform: rotate(${resultado}deg);
+            -ms-transform: rotate(${resultado}deg);
+            transform: rotate(${resultado}deg);
+        }
+        }
+        @keyframes girador {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(${resultado}deg);
+            -moz-transform: rotate(${resultado}deg);
+            -o-transform: rotate(${resultado}deg);
+            -ms-transform: rotate(${resultado}deg);
+            transform: rotate(${resultado}deg);
+        }
     }
 `;
 }
